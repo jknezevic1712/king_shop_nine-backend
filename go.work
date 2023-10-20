@@ -1,7 +1,7 @@
 go 1.21.1
 
 use (
-	./api_test
-	./api_test/database
-	./api_test/utils
+	./king-shop-nine
+	./king-shop-nine/database
+	./king-shop-nine/utils
 )

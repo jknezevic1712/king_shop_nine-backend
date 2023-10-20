@@ -3,7 +3,9 @@ package database
 import (
 	"database/sql"
 	"fmt"
+	"log"
 
+	"github.com/joho/godotenv"
 	_ "github.com/lib/pq"
 )
 
@@ -16,9 +18,19 @@ type User struct {
 	AccountCreatedAt string
 }
 
+func readEnvVars() map[string]string {
+	envVars, err := godotenv.Read(".env")
+	if err != nil {
+		log.Fatalf("Error loading .env file, %v", err.Error())
+	}
+
+	return envVars
+}
+
 // Establishes connection to the DB and returns `connection` and `error`
 func connectToDB() *sql.DB {
-	connection_string := "user=postgres password=go_api_test! host=db.szjzyutbvqnniaikanai.supabase.co port=5432 dbname=postgres"
+	envVars := readEnvVars()
+	connection_string := envVars["DB_CONN_STRING"]
 
 	// * Open connection to the DB
 	conn, err := sql.Open("postgres", connection_string)

@@ -1,8 +1,8 @@
 package main
 
 import (
-	"api_test/database"
 	"fmt"
+	"king-shop-nine/database"
 )
 
 // ! Types defined in separate packages are different even if they share name and underlying structure.
