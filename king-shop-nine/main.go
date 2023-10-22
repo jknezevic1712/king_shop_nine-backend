@@ -1,8 +1,10 @@
 package main
 
 import (
-	"fmt"
 	"king-shop-nine/database"
+	"king-shop-nine/utils"
+	"log"
+	"time"
 )
 
 // ! Types defined in separate packages are different even if they share name and underlying structure.
@@ -14,31 +16,31 @@ import (
 // }
 
 func main() {
-	// "Dec-17-98"
+	var user = database.User{
+		ID:               1,
+		Name:             "Jakov K",
+		Age:              24,
+		DateOfBirth:      utils.DateFormatter("Dec-17-98"),
+		Email:            "knezevic.jakov@gmail.com",
+		AccountCreatedAt: time.Now().Format("2006-01-02 15:04:05"),
+	}
 
-	// newDate := utils.DateFormatter("Dec-17-98")
-	// if newDate == "" || err != nil {
-	// 	fmt.Printf("main: error with creating a new date, %v", err)
-	// 	return
-	// }
+	// Creating tables
+	database.CreateTables()
 
-	// fmt.Println("main: created a new date", newDate)
+	// Adding a user
+	addUserErr := database.AddUser(user)
+	if addUserErr != nil {
+		log.Printf("main: addUser ERROR, %v\n", addUserErr)
+	} else {
+		log.Printf("main: addUser OK\n")
+	}
 
-	// var user = database.User{
-	// 	ID:               1,
-	// 	Name:             "Jakov K",
-	// 	Age:              24,
-	// 	DateOfBirth:      utils.DateFormatter("Dec-17-98"),
-	// 	Email:            "knezevic.jakov@gmail.com",
-	// 	AccountCreatedAt: time.Now().Format("2006-01-02 15:04:05"),
-	// }
+	// Fetching users
+	fetchedUsers := database.FetchUsers()
+	log.Printf("main: fetchedUsers => %v\n", fetchedUsers)
 
-	// err := database.AddUser(user)
-	// if err != nil {
-	// 	// fmt.Printf("main: unsuccesfully added the new user, %v\n", err)
-	// 	log.Fatalf("main: error with query 'database.AddUser', %v", err)
-	// }
-
-	data := database.FetchUsers()
-	fmt.Printf("main: fetched users from the DB, %v\n", data)
+	// Fetching user by id
+	fetchedUser := database.FetchUserByID(1)
+	log.Printf("main: fetchUserByID => %v\n", fetchedUser)
 }
