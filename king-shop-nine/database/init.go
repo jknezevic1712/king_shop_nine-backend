@@ -79,7 +79,7 @@ func CreateEmptyTables() error {
 				id SERIAL PRIMARY KEY,
 				"sessionToken" TEXT NOT NULL,
 				"userID" TEXT NOT NULL,
-				expires TIMESTAMP NOT NULL,
+				expires TEXT NOT NULL,
 				UNIQUE ("userID")
 		);
 	`
