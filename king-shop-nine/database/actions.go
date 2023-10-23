@@ -1,9 +1,9 @@
 package database
 
 import (
+	"king-shop-nine/utils"
 	"log"
 
-	"github.com/joho/godotenv"
 	_ "github.com/lib/pq"
 )
 
@@ -15,17 +15,23 @@ type User struct {
 	Image            string
 }
 
-func readEnvVars() map[string]string {
-	// Read() will try to read .env file in the directory that the function calling THIS function is located in
-	envVars, err := godotenv.Read()
-	if err != nil {
-		log.Printf("Error loading .env file, info: %v", err.Error())
-	}
+// Create user session
+//
+// @args userID *string
+func createUserSession(userID *string) {
+	conn := ConnectToDB()
 
-	return envVars
+	q := `
+		INSERT INTO "Session" (expires, "sessionToken", "userID")
+		VALUES ($1, $2, $3)
+	`
+	_, err := conn.Exec(q, utils.TimeAfter30Days(), utils.CreateJWTToken(), userID)
+	if err != nil {
+		log.Printf("createUserSession: error creating user session, %v", err)
+	}
 }
 
-// Adds user to the DB by passing `user` map as an argument
+// Add user to the DB
 //
 // @args newUser of User struct type
 //
@@ -33,15 +39,17 @@ func readEnvVars() map[string]string {
 func AddUser(newUser User) error {
 	conn := ConnectToDB()
 
-	// * Execute query of inserting a newUser into user table
-	insertData := `
-        INSERT INTO "Users" (id, name, email, accountCreatedAt, image)
-        VALUES ($1, $2, $3, $4, $5)`
-	_, err := conn.Exec(insertData, newUser.ID, newUser.Name, newUser.Email, newUser.AccountCreatedAt, newUser.Image)
+	q := `
+		INSERT INTO "Users" (id, name, email, "accountCreatedAt", image)
+		VALUES ($1, $2, $3, $4, $5)
+	`
+	_, err := conn.Exec(q, &newUser.ID, &newUser.Name, &newUser.Email, &newUser.AccountCreatedAt, &newUser.Image)
 	if err != nil {
 		log.Printf("AddUser: error while inserting a new user, %v\n", err)
 		return err
 	}
+	createUserSession(&newUser.ID)
+
 	log.Println("AddUser: succesfully inserted a new user")
 
 	conn.Close()

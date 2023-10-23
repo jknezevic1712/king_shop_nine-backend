@@ -1,8 +1,6 @@
 package main
 
-import (
-	"king-shop-nine/database"
-)
+import "king-shop-nine/database"
 
 func main() {
 	database.CreateEmptyTables()
