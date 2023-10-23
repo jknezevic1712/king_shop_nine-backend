@@ -1,6 +1,7 @@
 package database
 
 import (
+	"database/sql"
 	"log"
 
 	"king-shop-nine/utils"
@@ -28,6 +29,30 @@ var mockUsers = []User{
 		AccountCreatedAt: utils.GetTimeNowMs(),
 		Image:            "https://cdn.britannica.com/89/149189-050-68D7613E/Bengal-tiger.jpg",
 	},
+}
+
+// Establish connection to the DB
+//
+// @returns *sql.DB
+func ConnectToDB() *sql.DB {
+	envVars := readEnvVars()
+	connection_string := envVars["DB_CONN_STRING"]
+
+	// * Open connection to the DB
+	conn, err := sql.Open("postgres", connection_string)
+	if err != nil {
+		log.Printf("connectToDB: error while opening connection to the DB, %v\n", err)
+	}
+
+	// * Ping DB so we know we have a succesful connection
+	pingErr := conn.Ping()
+	if pingErr != nil {
+		log.Printf("connectToDB: ping unsuccesful, %v\n", pingErr)
+		conn.Close()
+	}
+	log.Println("connectToDB: connected to db")
+
+	return conn
 }
 
 // Create empty tables in DB based on the queries defined

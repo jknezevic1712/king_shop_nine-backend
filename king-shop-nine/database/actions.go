@@ -1,7 +1,6 @@
 package database
 
 import (
-	"database/sql"
 	"log"
 
 	"github.com/joho/godotenv"
@@ -24,30 +23,6 @@ func readEnvVars() map[string]string {
 	}
 
 	return envVars
-}
-
-// Establish connection to the DB
-//
-// @returns *sql.DB
-func ConnectToDB() *sql.DB {
-	envVars := readEnvVars()
-	connection_string := envVars["DB_CONN_STRING"]
-
-	// * Open connection to the DB
-	conn, err := sql.Open("postgres", connection_string)
-	if err != nil {
-		log.Printf("connectToDB: error while opening connection to the DB, %v\n", err)
-	}
-
-	// * Ping DB so we know we have a succesful connection
-	pingErr := conn.Ping()
-	if pingErr != nil {
-		log.Printf("connectToDB: ping unsuccesful, %v\n", pingErr)
-		conn.Close()
-	}
-	log.Println("connectToDB: connected to db")
-
-	return conn
 }
 
 // Adds user to the DB by passing `user` map as an argument
