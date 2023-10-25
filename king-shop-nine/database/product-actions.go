@@ -31,7 +31,7 @@ func AddProduct(newProduct utils.Product) error {
 
 // Fetch all products
 //
-// @returns []Product
+// @returns string
 func FetchProducts() string {
 	var products []utils.Product
 	conn := ConnectToDB()
@@ -61,9 +61,9 @@ func FetchProducts() string {
 
 // Fetch product by ID
 //
-// @args productID of int64 type
+// @args productID of integer type
 //
-// @returns Product
+// @returns string
 func FetchProductByID(productID int) string {
 	var product utils.Product
 	conn := ConnectToDB()

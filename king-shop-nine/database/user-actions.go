@@ -50,8 +50,8 @@ func AddUser(newUser utils.User) error {
 
 // Fetch all users
 //
-// @returns []User
-func FetchUsers() []utils.User {
+// @returns string
+func FetchUsers() string {
 	var users []utils.User
 	conn := ConnectToDB()
 
@@ -60,7 +60,6 @@ func FetchUsers() []utils.User {
 		log.Printf("FetchUsers: error executing query to the DB, %v\n", err)
 	}
 
-	// * Defer closing rows so that any resources it holds will be released when the function exits.
 	defer rows.Close()
 
 	_, err = rows.Columns()
@@ -75,7 +74,6 @@ func FetchUsers() []utils.User {
 		}
 
 		users = append(users, user)
-		log.Printf("Current users: %v\n", users)
 	}
 
 	if err := rows.Err(); err != nil {
@@ -83,25 +81,24 @@ func FetchUsers() []utils.User {
 	}
 
 	conn.Close()
-	return users
+	return utils.ToJSON(users)
 }
 
 // Fetch user by ID
 //
-// @args userID of int64 type
+// @args userID of integer type
 //
-// @returns User
-func FetchUserByID(userID int64) utils.User {
+// @returns string
+func FetchUserByID(userID string) string {
 	var user utils.User
 	conn := ConnectToDB()
 
 	row := conn.QueryRow(`SELECT * FROM "Users" WHERE id = $1`, userID)
 
 	if err := row.Scan(&user.ID, &user.Name, &user.Email, &user.AccountCreatedAt, &user.Image); err != nil {
-		log.Printf("FetchUserByID: error while fetching user with id %c, %v\n", userID, err)
+		log.Printf("FetchUserByID: error while fetching user with id %v, %v\n", userID, err)
 	}
 
-	log.Printf("FetchUserByID: fetched user => %v\n", user)
 	conn.Close()
-	return user
+	return utils.ToJSON(user)
 }
