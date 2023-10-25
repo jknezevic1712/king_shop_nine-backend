@@ -3,34 +3,9 @@ package database
 import (
 	"database/sql"
 	"log"
-	"time"
 
 	"king-shop-nine/utils"
 )
-
-var mockUsers = []User{
-	{
-		ID:               "1asda433sdaasd2",
-		Name:             "Jakov K",
-		Email:            "knezevic.jakov@gmail.com",
-		AccountCreatedAt: utils.IntToString(time.Now().UnixMilli()),
-		Image:            "https://t2.gstatic.com/licensed-image?q=tbn:ANd9GcQdAnprsidzbOSZ4jI1SvcFeIEuFKwBLrILGo8tLCEA4ixMzfxUQfk6onBDhipea4sD",
-	},
-	{
-		ID:               "2bvcv565vbbvc3a",
-		Name:             "Patrick Jane",
-		Email:            "pjane@mail.com",
-		AccountCreatedAt: utils.IntToString(time.Now().UnixMilli()),
-		Image:            "https://media.wired.com/photos/593261cab8eb31692072f129/master/w_2560%2Cc_limit/85120553.jpg",
-	},
-	{
-		ID:               "3zdfzdf34adadsa",
-		Name:             "Kimball Cho",
-		Email:            "kcho@mail.com",
-		AccountCreatedAt: utils.IntToString(time.Now().UnixMilli()),
-		Image:            "https://cdn.britannica.com/89/149189-050-68D7613E/Bengal-tiger.jpg",
-	},
-}
 
 // Establish connection to the DB
 //
@@ -84,6 +59,22 @@ func CreateEmptyTables() error {
 		);
 	`
 
+	ProductsTable := `
+		CREATE TABLE IF NOT EXISTS "Products" (
+			id SERIAL PRIMARY KEY,
+			title TEXT NOT NULL,
+			"shortDescription" TEXT NOT NULL,
+			description TEXT NOT NULL,
+			category TEXT NOT NULL,
+			subcategory TEXT NOT NULL,
+			image TEXT NOT NULL,
+			"dateAdded" TEXT NOT NULL,
+			"ratingRate" REAL NOT NULL,
+			"ratingCount" INTEGER NOT NULL,
+			UNIQUE (title)
+		);
+	`
+
 	// * Execute query of creating table
 	_, err := conn.Exec(UsersTable)
 	if err != nil {
@@ -97,22 +88,44 @@ func CreateEmptyTables() error {
 		return err
 	}
 
+	_, err = conn.Exec(ProductsTable)
+	if err != nil {
+		log.Printf("CreateEmptyTables: error while creating `Products` table, %v\n", err)
+		return err
+	}
+
 	log.Println("CreateEmptyTables: OK")
 	return nil
 }
 
-// Populate `Users` table with mock users data`
+// Populate `Users` table with mock data
 //
 // @returns error
-func PopulateUsersTableWithMockUsers() error {
-	for i := 0; i < len(mockUsers); i++ {
-		err := AddUser(mockUsers[i])
+func PopulateUsersTableWithMockData() error {
+	for i := 0; i < len(MockUsers); i++ {
+		err := AddUser(MockUsers[i])
 		if err != nil {
-			log.Printf("PopulateUsersTableWithMockUsers: error while populating `Users` table, %v\n", err)
+			log.Printf("PopulateUsersTableWithMockData: error while populating `Users` table, %v\n", err)
 			return err
 		}
 	}
 
-	log.Println("PopulateUsersTableWithMockUsers: OK")
+	log.Println("PopulateUsersTableWithMockData: OK")
+	return nil
+}
+
+// Populate `Products` table with mock data
+//
+// @returns error
+func PopulateProductsTableWithMockData() error {
+	for i := 0; i < len(MockProducts); i++ {
+		err := AddProduct(MockProducts[i])
+		if err != nil {
+			log.Printf("PopulateProductsTableWithMockData: error while populating `Products` table, %v\n", err)
+			return err
+		}
+	}
+
+	log.Println("PopulateProductsTableWithMockData: OK")
 	return nil
 }

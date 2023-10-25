@@ -4,5 +4,6 @@ import "king-shop-nine/database"
 
 func main() {
 	database.CreateEmptyTables()
-	database.PopulateUsersTableWithMockUsers()
+	database.PopulateUsersTableWithMockData()
+	database.PopulateProductsTableWithMockData()
 }

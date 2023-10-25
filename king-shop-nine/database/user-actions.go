@@ -7,14 +7,6 @@ import (
 	_ "github.com/lib/pq"
 )
 
-type User struct {
-	ID               string
-	Name             string
-	Email            string
-	AccountCreatedAt string
-	Image            string
-}
-
 // Create user session
 //
 // @args userID *string
