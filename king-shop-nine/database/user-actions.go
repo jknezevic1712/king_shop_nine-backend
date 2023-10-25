@@ -10,7 +10,7 @@ import (
 // Create user session
 //
 // @args userID *string
-func createUserSession(userID *string) {
+func createUserSession(userID string) {
 	conn := ConnectToDB()
 
 	q := `
@@ -25,7 +25,7 @@ func createUserSession(userID *string) {
 
 // Add user to the DB
 //
-// @args newUser of User struct type
+// @args newUser User
 //
 // @returns error
 func AddUser(newUser utils.User) error {
@@ -40,7 +40,7 @@ func AddUser(newUser utils.User) error {
 		log.Printf("AddUser: error while inserting a new user, %v\n", err)
 		return err
 	}
-	createUserSession(&newUser.ID)
+	createUserSession(newUser.ID)
 
 	log.Println("AddUser: succesfully inserted a new user")
 
@@ -86,7 +86,7 @@ func FetchUsers() string {
 
 // Fetch user by ID
 //
-// @args userID of integer type
+// @args userID string
 //
 // @returns string
 func FetchUserByID(userID string) string {

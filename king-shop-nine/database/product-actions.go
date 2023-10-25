@@ -7,7 +7,7 @@ import (
 
 // Add product to the DB
 //
-// @args newProduct of Product struct type
+// @args newProduct Product
 //
 // @returns error
 func AddProduct(newProduct utils.Product) error {
@@ -61,7 +61,7 @@ func FetchProducts() string {
 
 // Fetch product by ID
 //
-// @args productID of integer type
+// @args productID int
 //
 // @returns string
 func FetchProductByID(productID int) string {
