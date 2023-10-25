@@ -1,7 +1,6 @@
 package database
 
 import (
-	"encoding/json"
 	"king-shop-nine/utils"
 	"log"
 )
@@ -56,14 +55,10 @@ func FetchProducts() string {
 		log.Printf("FetchProducts: error while fetching products, %v\n", err)
 	}
 
-	marshalledRes, err := json.Marshal(products)
-	if err != nil {
-		log.Printf("FetchProducts: error while converting result to json, %v\n", err)
-	}
-	stringifiedJson := string(marshalledRes)
+	jsonRes := utils.ToJSON(products)
 
 	conn.Close()
-	return stringifiedJson
+	return jsonRes
 }
 
 // Fetch product by ID
@@ -72,12 +67,12 @@ func FetchProducts() string {
 //
 // @returns Product
 // func FetchProductByID(productID int64) utils.Product {
-// 	var jsonData []byte
-// for rows.Next() {
-// 		if err := rows.Scan(&jsonData); err != nil {
-// 			log.Printf("FetchProducts: error while fetching products, %v\n", err)
-// 		}
-// 	}
+// 	// 	var jsonData []byte
+// 	// for rows.Next() {
+// 	// 		if err := rows.Scan(&jsonData); err != nil {
+// 	// 			log.Printf("FetchProducts: error while fetching products, %v\n", err)
+// 	// 		}
+// 	// 	}
 
 // 	var product utils.Product
 // 	conn := ConnectToDB()

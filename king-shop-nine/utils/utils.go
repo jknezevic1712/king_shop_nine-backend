@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"encoding/json"
 	"errors"
 	"fmt"
 	"log"
@@ -100,4 +101,15 @@ func ValidateJWTToken(tokenString string) {
 	} else {
 		fmt.Printf("Couldn't handle this token => %v\n", err)
 	}
+}
+
+// Convert data to stringified JSON
+//
+// @returns string
+func ToJSON(data any) string {
+	res, err := json.Marshal(data)
+	if err != nil {
+		log.Printf("ToJSON: error while converting data to json, %v\n", err)
+	}
+	return string(res)
 }
