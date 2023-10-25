@@ -102,8 +102,8 @@ func CreateEmptyTables() error {
 //
 // @returns error
 func PopulateUsersTableWithMockData() error {
-	for i := 0; i < len(MockUsers); i++ {
-		err := AddUser(MockUsers[i])
+	for i := 0; i < len(utils.MockUsers); i++ {
+		err := AddUser(utils.MockUsers[i])
 		if err != nil {
 			log.Printf("PopulateUsersTableWithMockData: error while populating `Users` table, %v\n", err)
 			return err
@@ -118,8 +118,8 @@ func PopulateUsersTableWithMockData() error {
 //
 // @returns error
 func PopulateProductsTableWithMockData() error {
-	for i := 0; i < len(MockProducts); i++ {
-		err := AddProduct(MockProducts[i])
+	for i := 0; i < len(utils.MockProducts); i++ {
+		err := AddProduct(utils.MockProducts[i])
 		if err != nil {
 			log.Printf("PopulateProductsTableWithMockData: error while populating `Products` table, %v\n", err)
 			return err

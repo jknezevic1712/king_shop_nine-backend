@@ -1,7 +1,6 @@
-package database
+package utils
 
 import (
-	"king-shop-nine/utils"
 	"time"
 )
 
@@ -10,21 +9,21 @@ var MockUsers = []User{
 		ID:               "1asda433sdaasd2",
 		Name:             "Jakov K",
 		Email:            "knezevic.jakov@gmail.com",
-		AccountCreatedAt: utils.IntToString(time.Now().UnixMilli()),
+		AccountCreatedAt: IntToString(time.Now().UnixMilli()),
 		Image:            "https://t2.gstatic.com/licensed-image?q=tbn:ANd9GcQdAnprsidzbOSZ4jI1SvcFeIEuFKwBLrILGo8tLCEA4ixMzfxUQfk6onBDhipea4sD",
 	},
 	{
 		ID:               "2bvcv565vbbvc3a",
 		Name:             "Patrick Jane",
 		Email:            "pjane@mail.com",
-		AccountCreatedAt: utils.IntToString(time.Now().UnixMilli()),
+		AccountCreatedAt: IntToString(time.Now().UnixMilli()),
 		Image:            "https://media.wired.com/photos/593261cab8eb31692072f129/master/w_2560%2Cc_limit/85120553.jpg",
 	},
 	{
 		ID:               "3zdfzdf34adadsa",
 		Name:             "Kimball Cho",
 		Email:            "kcho@mail.com",
-		AccountCreatedAt: utils.IntToString(time.Now().UnixMilli()),
+		AccountCreatedAt: IntToString(time.Now().UnixMilli()),
 		Image:            "https://cdn.britannica.com/89/149189-050-68D7613E/Bengal-tiger.jpg",
 	},
 }

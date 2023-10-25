@@ -1,13 +1,16 @@
 package database
 
-import "log"
+import (
+	"king-shop-nine/utils"
+	"log"
+)
 
 // Add product to the DB
 //
 // @args newProduct of Product struct type
 //
 // @returns error
-func AddProduct(newProduct Product) error {
+func AddProduct(newProduct utils.Product) error {
 	conn := ConnectToDB()
 
 	q := `

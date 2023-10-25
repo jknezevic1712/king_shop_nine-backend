@@ -28,7 +28,7 @@ func createUserSession(userID *string) {
 // @args newUser of User struct type
 //
 // @returns error
-func AddUser(newUser User) error {
+func AddUser(newUser utils.User) error {
 	conn := ConnectToDB()
 
 	q := `
@@ -51,8 +51,8 @@ func AddUser(newUser User) error {
 // Fetch all users
 //
 // @returns []User
-func FetchUsers() []User {
-	var users []User
+func FetchUsers() []utils.User {
+	var users []utils.User
 	conn := ConnectToDB()
 
 	rows, err := conn.Query(`SELECT * FROM "Users"`)
@@ -69,7 +69,7 @@ func FetchUsers() []User {
 	}
 
 	for rows.Next() {
-		var user User
+		var user utils.User
 		if err := rows.Scan(&user.ID, &user.Name, &user.Email, &user.AccountCreatedAt, &user.Image); err != nil {
 			log.Printf("FetchUsers: error while fetching users, %v\n", err)
 		}
@@ -91,8 +91,8 @@ func FetchUsers() []User {
 // @args userID of int64 type
 //
 // @returns User
-func FetchUserByID(userID int64) User {
-	var user User
+func FetchUserByID(userID int64) utils.User {
+	var user utils.User
 	conn := ConnectToDB()
 
 	row := conn.QueryRow(`SELECT * FROM "Users" WHERE id = $1`, userID)
