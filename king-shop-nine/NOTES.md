@@ -23,3 +23,12 @@ Name string
 Age int32
 DateOfBirth string
 }
+
+### Printf format specifiers
+
+%d - for printing integers
+%f - for printing floating-point numbers
+%c - for printing characters
+%s - for printing strings
+%p - for printing memory addresses
+%x - for printing hexadecimal values
