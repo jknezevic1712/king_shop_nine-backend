@@ -55,10 +55,8 @@ func FetchProducts() string {
 		log.Printf("FetchProducts: error while fetching products, %v\n", err)
 	}
 
-	jsonRes := utils.ToJSON(products)
-
 	conn.Close()
-	return jsonRes
+	return utils.ToJSON(products)
 }
 
 // Fetch product by ID
@@ -66,24 +64,16 @@ func FetchProducts() string {
 // @args productID of int64 type
 //
 // @returns Product
-// func FetchProductByID(productID int64) utils.Product {
-// 	// 	var jsonData []byte
-// 	// for rows.Next() {
-// 	// 		if err := rows.Scan(&jsonData); err != nil {
-// 	// 			log.Printf("FetchProducts: error while fetching products, %v\n", err)
-// 	// 		}
-// 	// 	}
+func FetchProductByID(productID int) string {
+	var product utils.Product
+	conn := ConnectToDB()
 
-// 	var product utils.Product
-// 	conn := ConnectToDB()
+	row := conn.QueryRow(`SELECT * FROM "Products" WHERE id = $1`, productID)
 
-// 	row := conn.QueryRow(`SELECT * FROM "Products" WHERE id = $1`, productID)
+	if err := row.Scan(&product.ID, &product.Title, &product.ShortDescription, &product.Description, &product.Category, &product.Subcategory, &product.Image, &product.DateAdded, &product.Rating.Rate, &product.Rating.Count); err != nil {
+		log.Printf("FetchProductByID: error while fetching product with id %c, %v\n", productID, err)
+	}
 
-// 	if err := row.Scan(&product.ID, &product.Title, &product.ShortDescription, &product.Description, &product.Category, &product.Subcategory, &product.Image, &product.DateAdded, &product.Rating.Rate, &product.Rating.Count); err != nil {
-// 		log.Printf("FetchProductByID: error while fetching product with id %c, %v\n", productID, err)
-// 	}
-
-// 	log.Printf("FetchProductByID: fetched product => %v\n", product)
-// 	conn.Close()
-// 	return product
-// }
+	conn.Close()
+	return utils.ToJSON(product)
+}

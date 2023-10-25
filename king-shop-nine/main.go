@@ -1,11 +1,13 @@
 package main
 
-import "king-shop-nine/database"
-
 func main() {
 	// database.CreateEmptyTables()
 	// database.PopulateUsersTableWithMockData()
 	// database.PopulateProductsTableWithMockData()
 
-	database.FetchProducts()
+	// products := database.FetchProducts()
+	// log.Printf("Products => %v\n", products)
+
+	// product := database.FetchProductByID(2)
+	// log.Printf("Product => %v\n", product)
 }
