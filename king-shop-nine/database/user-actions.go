@@ -40,12 +40,12 @@ func updateUserSession(userID string) {
 	}
 }
 
-// Add user to the DB
+// Sign up user
 //
 // @args newUser User
 //
 // @returns error
-func AddUser(newUser utils.User) error {
+func SignUpUser(newUser utils.User) error {
 	conn := ConnectToDB()
 
 	q := `
@@ -54,13 +54,11 @@ func AddUser(newUser utils.User) error {
 	`
 	_, err := conn.Exec(q, newUser.ID, newUser.Name, newUser.Email, newUser.AccountCreatedAt, newUser.Image)
 	if err != nil {
-		log.Printf("AddUser: error while inserting a new user, %v\n", err)
+		log.Printf("SignUpUser: error while inserting a new user, %v\n", err)
 		return err
 	}
+
 	createUserSession(newUser.ID)
-
-	log.Println("AddUser: succesfully inserted a new user")
-
 	conn.Close()
 	return nil
 }

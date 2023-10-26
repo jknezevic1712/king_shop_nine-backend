@@ -5,7 +5,7 @@ func main() {
 	// database.PopulateUsersTableWithMockData()
 	// database.PopulateProductsTableWithMockData()
 
-	// database.AddUser(utils.User{
+	// database.SignUpUser(utils.User{
 	// 	ID:               "1aDa433sd23aSd2",
 	// 	Name:             "Teresa Lisbon",
 	// 	Email:            "tlisbon@mail.com",
