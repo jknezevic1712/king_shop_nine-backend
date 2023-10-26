@@ -16,7 +16,7 @@ func main() {
 	// users := database.FetchUsers()
 	// log.Printf("Users => %v\n", users)
 
-	// user := database.FetchUserByID("2bvcv565vbbvc3a")
+	// user := database.FetchUserByID("2bvcv565vbbvc3a", false)
 	// log.Printf("User => %v\n", user)
 
 	// products := database.FetchProducts()

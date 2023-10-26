@@ -99,12 +99,12 @@ func FetchUsers() string {
 	return utils.ToJSON(users)
 }
 
-// Fetch user by ID
+// Fetch user by ID and optionally update user session if the `isLogin` argument is true
 //
-// @args userID string
+// @args userID string, isLogin bool
 //
 // @returns string
-func FetchUserByID(userID string) string {
+func FetchUserByID(userID string, isLogin bool) string {
 	var user utils.User
 	conn := ConnectToDB()
 
@@ -114,27 +114,10 @@ func FetchUserByID(userID string) string {
 		log.Printf("FetchUserByID: error while fetching user with id %v, %v\n", userID, err)
 	}
 
-	conn.Close()
-	return utils.ToJSON(user)
-}
-
-// Login user
-//
-// @args userID string
-//
-// @returns string
-func LoginUser(userID string) string {
-	var user utils.User
-	conn := ConnectToDB()
-	row := conn.QueryRow(`SELECT * FROM "Users" WHERE id = $1`, userID)
-
-	err := row.Scan(&user.ID, &user.Name, &user.Email, &user.AccountCreatedAt, &user.Image)
-	if err != nil {
-		log.Printf("LoginUser: error while querying user with id %v, %v\n", userID, err)
-		return ""
+	if isLogin {
+		updateUserSession(user.ID)
 	}
 
-	updateUserSession(user.ID)
 	conn.Close()
 	return utils.ToJSON(user)
 }
