@@ -24,4 +24,7 @@ func main() {
 
 	// product := database.FetchProductByID(2)
 	// log.Printf("Product => %v\n", product)
+
+	// user := database.LoginUser("3zdfzdf34adadsa")
+	// log.Printf("User logged in => %v\n", user)
 }

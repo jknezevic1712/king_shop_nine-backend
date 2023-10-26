@@ -23,6 +23,23 @@ func createUserSession(userID string) {
 	}
 }
 
+// Update user session
+//
+// @args userID string
+func updateUserSession(userID string) {
+	conn := ConnectToDB()
+
+	q := `
+		UPDATE "Session"
+		SET expires = $1, "sessionToken" = $2
+		WHERE "userID" = $3
+	`
+	_, err := conn.Exec(q, utils.TimeAfter30Days(), utils.CreateJWTToken(), userID)
+	if err != nil {
+		log.Printf("updateUserSession: error updating user session, %v", err)
+	}
+}
+
 // Add user to the DB
 //
 // @args newUser User
@@ -99,6 +116,27 @@ func FetchUserByID(userID string) string {
 		log.Printf("FetchUserByID: error while fetching user with id %v, %v\n", userID, err)
 	}
 
+	conn.Close()
+	return utils.ToJSON(user)
+}
+
+// Login user
+//
+// @args userID string
+//
+// @returns string
+func LoginUser(userID string) string {
+	var user utils.User
+	conn := ConnectToDB()
+	row := conn.QueryRow(`SELECT * FROM "Users" WHERE id = $1`, userID)
+
+	err := row.Scan(&user.ID, &user.Name, &user.Email, &user.AccountCreatedAt, &user.Image)
+	if err != nil {
+		log.Printf("LoginUser: error while querying user with id %v, %v\n", userID, err)
+		return ""
+	}
+
+	updateUserSession(user.ID)
 	conn.Close()
 	return utils.ToJSON(user)
 }
