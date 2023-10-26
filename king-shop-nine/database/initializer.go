@@ -103,7 +103,7 @@ func CreateEmptyTables() error {
 // @returns error
 func PopulateUsersTableWithMockData() error {
 	for i := 0; i < len(utils.MockUsers); i++ {
-		err := AddUser(utils.MockUsers[i])
+		err := SignUpUser(utils.MockUsers[i])
 		if err != nil {
 			log.Printf("PopulateUsersTableWithMockData: error while populating `Users` table, %v\n", err)
 			return err
