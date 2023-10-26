@@ -5,6 +5,14 @@ func main() {
 	// database.PopulateUsersTableWithMockData()
 	// database.PopulateProductsTableWithMockData()
 
+	// database.AddUser(utils.User{
+	// 	ID:               "1aDa433sd23aSd2",
+	// 	Name:             "Teresa Lisbon",
+	// 	Email:            "tlisbon@mail.com",
+	// 	AccountCreatedAt: utils.IntToString(time.Now().UnixMilli()),
+	// 	Image:            "https://t2.gstatic.com/licensed-image?q=tbn:ANd9GcQdAnprsidzbOSZ4jI1SvcFeIEuFKwBLrILGo8tLCEA4ixMzfxUQfk6onBDhipea4sD",
+	// })
+
 	// users := database.FetchUsers()
 	// log.Printf("Users => %v\n", users)
 

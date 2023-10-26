@@ -9,7 +9,7 @@ import (
 
 // Create user session
 //
-// @args userID *string
+// @args userID string
 func createUserSession(userID string) {
 	conn := ConnectToDB()
 
@@ -35,7 +35,7 @@ func AddUser(newUser utils.User) error {
 		INSERT INTO "Users" (id, name, email, "accountCreatedAt", image)
 		VALUES ($1, $2, $3, $4, $5)
 	`
-	_, err := conn.Exec(q, &newUser.ID, &newUser.Name, &newUser.Email, &newUser.AccountCreatedAt, &newUser.Image)
+	_, err := conn.Exec(q, newUser.ID, newUser.Name, newUser.Email, newUser.AccountCreatedAt, newUser.Image)
 	if err != nil {
 		log.Printf("AddUser: error while inserting a new user, %v\n", err)
 		return err
