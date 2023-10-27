@@ -30,7 +30,7 @@ var MockUsers = []User{
 
 var MockProducts = []Product{
 	{
-		ID:               1,
+		ID:               0,
 		Title:            "Brown Brim",
 		ShortDescription: "The brim hat is a classic and versatile accessory that seamlessly marries fashion and practicality",
 		Description:      "The brim hat is a classic and versatile accessory that seamlessly marries fashion and practicality. Brim hats come in a variety of styles, materials, and colors, catering to a range of fashion preferences. From classic straw or woven designs for a breezy summer look to wool or felt options that offer warmth and elegance during cooler seasons, there's a brim hat for every occasion. The color palette spans from neutral tones to vibrant hues, allowing you to express your personal style. Crafted with quality and durability in mind, the brim hat promises long-lasting wear and timeless style. Its ability to combine fashion-forward design with practical sun protection or weather resistance ensures it remains a reliable accessory for those who appreciate both form and function. Whether you're seeking a touch of elegance, sun protection, or an instant style upgrade, the brim hat stands as a versatile and iconic addition to your accessory collection. It encapsulates the essence of classic fashion while adapting to modern trends and needs, making it a beloved choice for individuals with a keen sense of style.",
@@ -45,7 +45,7 @@ var MockProducts = []Product{
 		},
 	},
 	{
-		ID:               2,
+		ID:               1,
 		Price:            9.99,
 		Title:            "Blue Beanie",
 		ShortDescription: "Suitable for various seasons, from winter to transitional weather, and even cool summer nights",
@@ -60,7 +60,7 @@ var MockProducts = []Product{
 		},
 	},
 	{
-		ID:               3,
+		ID:               2,
 		Title:            "Brown Cowboy",
 		ShortDescription: "Crafted from durable materials such as felt, straw, or leather, the cowboy hat is designed to withstand the harshest elements of the outdoors",
 		Description:      "Crafted from durable materials such as felt, straw, or leather, the cowboy hat is designed to withstand the harshest elements of the outdoors. Its wide brim provides ample shade from the scorching sun, shielding the wearer's face and neck, while the crown offers ventilation and protection from rain and wind. Beyond its functionality, the cowboy hat has become an enduring fashion statement. Available in a wide range of colors and materials, it allows wearers to express their unique personality and style. Whether you prefer a classic brown or black hat for a timeless Western look, or a vibrant and intricate design for a bold fashion statement, there's a cowboy hat to suit every taste. The cowboy hat is not just an accessory; it's a symbol of the American frontier spirit, adventure, and a connection to the great outdoors. Whether worn by cowboys and cowgirls on the ranch, country music stars on stage, or anyone looking to add a touch of Western flair to their wardrobe, the cowboy hat remains a true icon of American culture and heritage.",
@@ -75,7 +75,7 @@ var MockProducts = []Product{
 		},
 	},
 	{
-		ID:               4,
+		ID:               3,
 		Image:            "https://i.ibb.co/RjBLWxB/grey-brim.png",
 		Title:            "Grey Brim",
 		ShortDescription: "Crafted with quality and durability in mind, the brim hat promises long-lasting wear and timeless style",
@@ -90,7 +90,7 @@ var MockProducts = []Product{
 		},
 	},
 	{
-		ID:               5,
+		ID:               4,
 		Image:            "https://i.ibb.co/YTjW3vF/green-beanie.png",
 		Title:            "Green Beanie",
 		ShortDescription: "Available in an array of colors and patterns, you can easily find the perfect beanie to match your personal style and mood",
@@ -105,7 +105,7 @@ var MockProducts = []Product{
 		},
 	},
 	{
-		ID:               6,
+		ID:               5,
 		Image:            "https://i.ibb.co/rKBDvJX/palm-tree-cap.png",
 		Price:            8.99,
 		Title:            "Palm Tree Cap",
@@ -120,7 +120,7 @@ var MockProducts = []Product{
 		},
 	},
 	{
-		ID:               7,
+		ID:               6,
 		Image:            "https://i.ibb.co/bLB646Z/red-beanie.png",
 		Price:            9.99,
 		Title:            "Red Beanie",
@@ -135,7 +135,7 @@ var MockProducts = []Product{
 		},
 	},
 	{
-		ID:               8,
+		ID:               7,
 		Image:            "https://i.ibb.co/1f2nWMM/wolf-cap.png",
 		Title:            "Wolf Cap",
 		ShortDescription: "Known for its iconic design, it's a wardrobe staple that transcends generations and trends",
@@ -150,7 +150,7 @@ var MockProducts = []Product{
 		},
 	},
 	{
-		ID:               9,
+		ID:               8,
 		Title:            "Blue Snapback",
 		ShortDescription: "Sporty and casual headwear accessory that effortlessly combines comfort, versatility, and style",
 		Description:      "Sporty and casual headwear accessory that effortlessly combines comfort, versatility, and style. Known for its iconic design, it's a wardrobe staple that transcends generations and trends. Caps come in a wide variety of materials, with cotton, canvas, and polyester being common choices. This diversity in materials allows you to select a cap that suits your specific needs, whether you're looking for breathability in hot weather, moisture-wicking properties for physical activity, or warmth in cooler climates. Known for their accessibility and ease of wear. They're perfect for those \"bad hair days,\" as they provide a quick and stylish solution to keep you looking put together. Moreover, caps are suitable for various occasions, from laid-back weekends to active outdoor adventures to casual outings with friends.",
@@ -165,7 +165,7 @@ var MockProducts = []Product{
 		},
 	},
 	{
-		ID:               10,
+		ID:               9,
 		Title:            "Camo Down Vest",
 		ShortDescription: "Vests come in various lengths, with some ending at the waist, while others extend lower, providing different styling options",
 		Description:      "The defining feature of a vest is its tailored and structured design. It boasts a front opening with buttons or snaps, a V-neck or scoop neckline, and a close fit to the body, often featuring darts or seams to ensure a sleek and flattering silhouette. Vests come in various lengths, with some ending at the waist, while others extend lower, providing different styling options. Vests are available in a wide range of fabrics and materials, from classic wool and tweed for a formal and traditional look to lightweight cotton or linen for a more relaxed and breathable feel. This versatility in materials allows vests to be worn throughout the year, adapting to both warm and cold weather. In addition to its adaptability, the vest offers a canvas for personal style expression. It can be accessorized with pocket watches, tie bars, or boutonnieres, further enhancing its visual appeal and making it an ideal choice for those who appreciate sartorial details.",
@@ -180,7 +180,7 @@ var MockProducts = []Product{
 		},
 	},
 	{
-		ID:               11,
+		ID:               10,
 		Price:            8.99,
 		Title:            "Floral T-shirt",
 		ShortDescription: "Crafted from soft, breathable materials like cotton or jersey fabric, ensuring comfort even during the warmest days",
@@ -195,7 +195,7 @@ var MockProducts = []Product{
 		},
 	},
 	{
-		ID:               12,
+		ID:               11,
 		Price:            11.99,
 		Image:            "https://i.ibb.co/55z32tw/long-sleeve.png",
 		Title:            "Black & White Longsleeve",
@@ -210,7 +210,7 @@ var MockProducts = []Product{
 		},
 	},
 	{
-		ID:               13,
+		ID:               12,
 		Title:            "Pink T-shirt",
 		ShortDescription: "Crafted from soft, breathable materials like cotton or jersey fabric, ensuring comfort even during the warmest days",
 		Description:      "T-shirts are not just a style choice; they are a reflection of personality and taste. Whether you opt for a vintage band tee to showcase your musical appreciation, a crisp white tee for a timeless look, or a bold, colorful design to make a statement, the t-shirt embodies individuality and versatility. T-shirts are commonly crafted from soft, breathable materials like cotton or jersey fabric, ensuring comfort even during the warmest days. This versatility in materials also means that t-shirts come in a wide range of colors and patterns, catering to various style preferences. Its construction allows for ease of movement and comfort, making it a go-to choice for everyday wear.",
@@ -225,7 +225,7 @@ var MockProducts = []Product{
 		},
 	},
 	{
-		ID:               14,
+		ID:               13,
 		Image:            "https://i.ibb.co/VpW4x5t/roll-up-jean-shirt.png",
 		Title:            "Jean Long Sleeve",
 		ShortDescription: "Provides warmth and durability, ideal for cooler seasons or outdoor activities",
@@ -240,7 +240,7 @@ var MockProducts = []Product{
 		},
 	},
 	{
-		ID:               15,
+		ID:               14,
 		Title:            "Burgundy T-shirt",
 		ShortDescription: "Crafted from soft, breathable materials like cotton or jersey fabric, ensuring comfort even during the warmest days",
 		Description:      "T-shirts are not just a style choice; they are a reflection of personality and taste. Whether you opt for a vintage band tee to showcase your musical appreciation, a crisp white tee for a timeless look, or a bold, colorful design to make a statement, the t-shirt embodies individuality and versatility. T-shirts are commonly crafted from soft, breathable materials like cotton or jersey fabric, ensuring comfort even during the warmest days. This versatility in materials also means that t-shirts come in a wide range of colors and patterns, catering to various style preferences. Its construction allows for ease of movement and comfort, making it a go-to choice for everyday wear.",
@@ -255,7 +255,7 @@ var MockProducts = []Product{
 		},
 	},
 	{
-		ID:               16,
+		ID:               15,
 		Price:            34.99,
 		Title:            "Black Jean Shearling",
 		ShortDescription: "A reliable choice for staying warm on cooler days, and its timeless appeal ensures it will never go out of style",
@@ -270,7 +270,7 @@ var MockProducts = []Product{
 		},
 	},
 	{
-		ID:               17,
+		ID:               16,
 		Price:            39.99,
 		Title:            "Blue Jean Jacket",
 		ShortDescription: "A wardrobe essential that speaks to your enduring sense of fashion",
@@ -285,7 +285,7 @@ var MockProducts = []Product{
 		},
 	},
 	{
-		ID:               18,
+		ID:               17,
 		Title:            "Grey Jean Jacket",
 		ShortDescription: "Reliable choice for staying warm on cooler days, and its timeless appeal ensures it will never go out of style",
 		Description:      "Introducing our Denim Jacket - the quintessential embodiment of enduring style and exceptional craftsmanship. This jacket is meticulously crafted from premium denim fabric, meticulously selected for its durability and comfort, ensuring it will be a cherished addition to your wardrobe for years to come. Designed with attention to detail, our Denim Jacket boasts sturdy metal buttons, reinforced stitching, and a comfortable, tailored fit that offers both mobility and a flattering silhouette. It's a reliable choice for staying warm on cooler days, and its timeless appeal ensures it will never go out of style. From its classic design to its exceptional durability, our Denim Jacket is a wardrobe essential that speaks to your enduring sense of fashion. Make a statement of timeless style and unmatched quality with this must-have piece.",
@@ -300,7 +300,7 @@ var MockProducts = []Product{
 		},
 	},
 	{
-		ID:               19,
+		ID:               18,
 		Image:            "https://i.ibb.co/s96FpdP/brown-shearling.png",
 		Title:            "Brown Shearling",
 		ShortDescription: "Epitome of cozy elegance and cold-weather chic. Crafted with meticulous attention to detail",
@@ -315,7 +315,7 @@ var MockProducts = []Product{
 		},
 	},
 	{
-		ID:               20,
+		ID:               19,
 		Title:            "Tan Trench",
 		ShortDescription: "Dependable choice for both rainy days and chic outings. Its versatile design seamlessly transitions from casual to formal occasions",
 		Description:      "Trench, a true emblem of sophistication and style. Crafted with meticulous attention to detail, this jacket embodies the timeless charm of the classic trench coat in a modern and versatile silhouette. Made from high-quality, water-resistant fabric, this jacket offers practicality along with style, making it a dependable choice for both rainy days and chic outings. Its versatile design seamlessly transitions from casual to formal occasions, providing a go-to option for all your fashion needs. Our Trench Jacket features a tailored fit with a double-breasted front adorned with elegant buttons, exuding a refined and polished look. The waist belt cinches comfortably to accentuate your figure, while the notched lapels add a touch of timeless class.",
@@ -330,7 +330,7 @@ var MockProducts = []Product{
 		},
 	},
 	{
-		ID:               21,
+		ID:               20,
 		Title:            "Blue Tanktop",
 		ShortDescription: "Perfect blend of comfort and style for warm-weather days",
 		Description:      "Introducing our Tank Top, the perfect blend of comfort and style for warm-weather days. Crafted from soft, breathable fabric, this tank top offers a relaxed fit that keeps you cool and comfortable. Its flattering sleeveless design and rounded neckline make it a versatile addition to your wardrobe, ideal for layering or wearing on its own. With a range of colors to choose from, our Tank Top effortlessly combines everyday comfort with a touch of casual chic. Stay comfortable and stylish all day long with this essential piece.",
@@ -345,7 +345,7 @@ var MockProducts = []Product{
 		},
 	},
 	{
-		ID:               22,
+		ID:               21,
 		Title:            "Floral Blouse",
 		ShortDescription: "Crafted with exquisite attention to detail, this blouse showcases a delicate floral pattern on a backdrop of soft, flowing fabric",
 		Description:      "Introducing our Elegance in Floral Blouse, a blossoming symbol of sophistication and femininity. Crafted with exquisite attention to detail, this blouse showcases a delicate floral pattern on a backdrop of soft, flowing fabric.",
@@ -360,7 +360,7 @@ var MockProducts = []Product{
 		},
 	},
 	{
-		ID:               23,
+		ID:               22,
 		Title:            "Floral Dress",
 		ShortDescription: "Perfect choice for formal events, weddings, or memorable evenings out",
 		Description:      "Elegant Floral Dress, a timeless embodiment of grace and sophistication. This exquisite dress showcases a flowing silhouette, adorned with delicate lace detailing that adds a touch of romance to any special occasion. Crafted from luxurious, high-quality materials, this dress not only offers a comfortable fit but also ensures you stand out in style. The flattering design, featuring a cinched waist and a gracefully draping skirt, complements your figure, making it the perfect choice for formal events, weddings, or memorable evenings out.",
@@ -375,7 +375,7 @@ var MockProducts = []Product{
 		},
 	},
 	{
-		ID:               24,
+		ID:               23,
 		Image:            "https://i.ibb.co/N3BN1bh/red-polka-dot-dress.png",
 		Title:            "Red Dots Dress",
 		ShortDescription: "Crafted from luxurious, high-quality materials, this dress not only offers a comfortable fit but also ensures you stand out in style",
@@ -390,7 +390,7 @@ var MockProducts = []Product{
 		},
 	},
 	{
-		ID:               25,
+		ID:               24,
 		Image:            "https://i.ibb.co/KmSkMbH/striped-sweater.png",
 		Price:            14.99,
 		Title:            "Striped Sweater",
@@ -405,7 +405,7 @@ var MockProducts = []Product{
 		},
 	},
 	{
-		ID:               26,
+		ID:               25,
 		Image:            "https://i.ibb.co/v1cvwNf/yellow-track-suit.png",
 		Price:            12.99,
 		Title:            "Yellow Track Suit",
@@ -420,7 +420,7 @@ var MockProducts = []Product{
 		},
 	},
 	{
-		ID:               27,
+		ID:               26,
 		Image:            "https://i.ibb.co/qBcrsJg/white-vest.png",
 		Title:            "White Blouse",
 		ShortDescription: "Introducing our elegance in White Blouse, a blossoming symbol of sophistication and femininity",
@@ -435,7 +435,7 @@ var MockProducts = []Product{
 		},
 	},
 	{
-		ID:               28,
+		ID:               27,
 		Title:            "Adidas NMD",
 		ShortDescription: "Perfect fusion of style and comfort",
 		Description:      "Perfect fusion of style and comfort. These sneakers are designed to accompany you on all your adventures, from urban streets to outdoor escapades. Crafted with precision, our Adidas NMD Sneakers boast a sleek and versatile design that effortlessly complements any outfit. The premium materials ensure durability, while the cushioned insole provides all-day comfort.",
@@ -450,7 +450,7 @@ var MockProducts = []Product{
 		},
 	},
 	{
-		ID:               29,
+		ID:               28,
 		Price:            89.99,
 		Image:            "https://i.ibb.co/dJbG1cT/yeezy.png",
 		Title:            "Adidas Yeezy",
@@ -465,7 +465,7 @@ var MockProducts = []Product{
 		},
 	},
 	{
-		ID:               30,
+		ID:               29,
 		Title:            "Black Converse",
 		ShortDescription: "Crafted with precision",
 		Description:      "Perfect fusion of style and comfort. These sneakers are designed to accompany you on all your adventures, from urban streets to outdoor escapades. Crafted with precision, Black Converse Sneakers boast a sleek and versatile design that effortlessly complements any outfit. The premium materials ensure durability, while the cushioned insole provides all-day comfort.",
@@ -480,7 +480,7 @@ var MockProducts = []Product{
 		},
 	},
 	{
-		ID:               31,
+		ID:               30,
 		Price:            69.99,
 		Title:            "Nike White AirForce",
 		ShortDescription: "Premium materials ensure durability, while the cushioned insole provides all-day comfort",
@@ -495,7 +495,7 @@ var MockProducts = []Product{
 		},
 	},
 	{
-		ID:               32,
+		ID:               31,
 		Price:            59.99,
 		Title:            "Nike Red High Tops",
 		ShortDescription: "Design that effortlessly complements any outfit",
@@ -510,7 +510,7 @@ var MockProducts = []Product{
 		},
 	},
 	{
-		ID:               33,
+		ID:               32,
 		Price:            44.99,
 		Image:            "https://i.ibb.co/fMTV342/nike-brown.png",
 		Title:            "Nike Brown High Tops",
@@ -525,7 +525,7 @@ var MockProducts = []Product{
 		},
 	},
 	{
-		ID:               34,
+		ID:               33,
 		Title:            "Air Jordan Limited",
 		ShortDescription: "Materials ensure durability and perfect fusion of style and comfort",
 		Description:      "Perfect fusion of style and comfort. These sneakers are designed to accompany you on all your adventures, from urban streets to outdoor escapades. Crafted with precision, Air Jordan Limited boast a sleek and versatile design that effortlessly complements any outfit. The premium materials ensure durability, while the cushioned insole provides all-day comfort.",
@@ -540,7 +540,7 @@ var MockProducts = []Product{
 		},
 	},
 	{
-		ID:               35,
+		ID:               34,
 		Image:            "https://i.ibb.co/Mhh6wBg/timberlands.png",
 		Price:            99.99,
 		Title:            "Timberlands",
