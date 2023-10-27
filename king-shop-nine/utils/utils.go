@@ -56,6 +56,21 @@ func IntToString(number int64) string {
 	return strconv.Itoa(numberInt)
 }
 
+// Convert string to int
+//
+// @returns int
+func StringToInt(text string) (int, error) {
+	number, err := strconv.Atoi(text)
+
+	if err != nil {
+		fmt.Println("Error during conversion")
+		return 0, err
+	}
+
+	fmt.Println(number)
+	return number, nil
+}
+
 // Get time after 30 days in milliseconds
 //
 // @returns string
