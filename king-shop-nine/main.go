@@ -1,5 +1,9 @@
 package main
 
+import (
+	"king-shop-nine/api"
+)
+
 func main() {
 	// database.CreateEmptyTables()
 	// database.PopulateUsersTableWithMockData()
@@ -27,4 +31,6 @@ func main() {
 
 	// user := database.LoginUser("3zdfzdf34adadsa")
 	// log.Printf("User logged in => %v\n", user)
+
+	api.InitializeApi()
 }
