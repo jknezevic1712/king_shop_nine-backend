@@ -67,7 +67,7 @@ func SignUpUser(newUser utils.User) error {
 //
 // @returns string
 func FetchUsers() string {
-	var users []utils.User
+	users := []utils.User{}
 	conn := ConnectToDB()
 
 	rows, err := conn.Query(`SELECT * FROM "Users"`)
@@ -83,7 +83,7 @@ func FetchUsers() string {
 	}
 
 	for rows.Next() {
-		var user utils.User
+		user := utils.User{}
 		if err := rows.Scan(&user.ID, &user.Name, &user.Email, &user.AccountCreatedAt, &user.Image); err != nil {
 			log.Printf("FetchUsers: error while fetching users, %v\n", err)
 		}
@@ -105,7 +105,7 @@ func FetchUsers() string {
 //
 // @returns string
 func FetchUserByID(userID string, isLogin bool) string {
-	var user utils.User
+	user := utils.User{}
 	conn := ConnectToDB()
 
 	row := conn.QueryRow(`SELECT * FROM "Users" WHERE id = $1`, userID)
