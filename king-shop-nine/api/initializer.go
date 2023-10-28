@@ -18,7 +18,10 @@ func InitializeApi() {
 }
 
 func getProducts(c *gin.Context) {
-	products := database.FetchProducts()
+	products, err := database.FetchProducts()
+	if err != nil {
+		c.IndentedJSON(http.StatusBadRequest, gin.H{"message": "products could not be retrieved"})
+	}
 
 	c.IndentedJSON(http.StatusOK, products)
 

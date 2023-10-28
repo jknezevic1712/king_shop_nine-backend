@@ -31,14 +31,15 @@ func AddProduct(newProduct utils.Product) error {
 
 // Fetch all products
 //
-// @returns string
-func FetchProducts() string {
+// @returns []utils.Product
+func FetchProducts() ([]utils.Product, error) {
 	var products []utils.Product
 	conn := ConnectToDB()
 
 	rows, err := conn.Query(`SELECT * FROM "Products"`)
 	if err != nil {
 		log.Printf("FetchProducts: error executing query to the DB, %v\n", err)
+		return products, err
 	}
 
 	defer rows.Close()
@@ -47,23 +48,25 @@ func FetchProducts() string {
 		var product utils.Product
 		if err = rows.Scan(&product.ID, &product.Title, &product.ShortDescription, &product.Description, &product.Category, &product.Subcategory, &product.Image, &product.DateAdded, &product.Rating.Rate, &product.Rating.Count); err != nil {
 			log.Printf("FetchProducts: error while fetching products, %v\n", err)
+			return products, err
 		}
 
 		products = append(products, product)
 	}
 	if err = rows.Err(); err != nil {
 		log.Printf("FetchProducts: error while fetching products, %v\n", err)
+		return products, err
 	}
 
 	conn.Close()
-	return utils.ToJSON(products)
+	return products, nil
 }
 
 // Fetch product by ID
 //
 // @args productID int
 //
-// @returns string
+// @returns (utils.Product, error)
 func FetchProductByID(productID int) (utils.Product, error) {
 	var product utils.Product
 	conn := ConnectToDB()
