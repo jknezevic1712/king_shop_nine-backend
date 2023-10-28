@@ -8,6 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// Initialize API server with routes defined
 func InitializeApi() {
 	router := gin.Default()
 	router.GET("/products", getProducts)
@@ -17,6 +18,7 @@ func InitializeApi() {
 	router.Run("localhost:8080")
 }
 
+// Get all products from database
 func getProducts(c *gin.Context) {
 	products, err := database.FetchProducts()
 	if err != nil {
@@ -30,6 +32,7 @@ func getProducts(c *gin.Context) {
 	//   --request "GET"
 }
 
+// Get product by ID provided as url param
 func getProductByID(c *gin.Context) {
 	productID, err := utils.StringToInt(c.Param("id"))
 	if err != nil {
@@ -46,6 +49,7 @@ func getProductByID(c *gin.Context) {
 	// curl http://localhost:8080/product/2
 }
 
+// Save a new product to database
 func postProduct(c *gin.Context) {
 	newProduct := utils.Product{}
 
@@ -62,6 +66,6 @@ func postProduct(c *gin.Context) {
 
 	c.JSON(http.StatusCreated, gin.H{"message": "product successfully created", "details": nil})
 
-	// curl http://localhost:8080/product --include --header "Content-Type: application/json" --request "POST" --data '{"id": 35,"title": "Old school jeans","price": 34.99,"shortDescription": "Be cool, be oldschool!","description": "Old school style jeans that return you back to the good ol` days!","category": "unisex","subcategory": "all","image": "https://i.ibb.co/ZYW3VTp/brown-brim.png","dateAdded": "1682267143000","rating":{"rate": 4.6,"count": 15}}'
+	// curl http://localhost:8080/product --include --header "Content-Type: application/json" --request "POST" --data '{"title": "Old school jeans","price": 34.99,"shortDescription": "Be cool, be oldschool!","description": "Old school style jeans that return you back to the good ol` days!","category": "unisex","subcategory": "all","image": "https://i.ibb.co/ZYW3VTp/brown-brim.png","dateAdded": "1682267143000","rating":{"rate": 4.6,"count": 15}}'
 	// {"id": 35,"title": "Old school jeans","price": 34.99,"shortDescription": "Be cool, be oldschool!","description": "Old school style jeans that return you back to the good ol` days!","category": "unisex","subcategory": "all","image": "https://i.ibb.co/ZYW3VTp/brown-brim.png","dateAdded": "1682267143000","rating": {"rate": 4.6,"count": 15}}
 }
