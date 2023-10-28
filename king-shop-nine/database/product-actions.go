@@ -64,7 +64,7 @@ func FetchProducts() string {
 // @args productID int
 //
 // @returns string
-func FetchProductByID(productID int) string {
+func FetchProductByID(productID int) (utils.Product, error) {
 	var product utils.Product
 	conn := ConnectToDB()
 
@@ -72,8 +72,9 @@ func FetchProductByID(productID int) string {
 
 	if err := row.Scan(&product.ID, &product.Title, &product.ShortDescription, &product.Description, &product.Category, &product.Subcategory, &product.Image, &product.DateAdded, &product.Rating.Rate, &product.Rating.Count); err != nil {
 		log.Printf("FetchProductByID: error while fetching product with id %c, %v\n", productID, err)
+		return product, err
 	}
 
 	conn.Close()
-	return utils.ToJSON(product)
+	return product, nil
 }

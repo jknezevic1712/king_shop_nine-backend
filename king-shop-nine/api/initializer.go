@@ -30,13 +30,15 @@ func getProducts(c *gin.Context) {
 func getProductByID(c *gin.Context) {
 	productID, err := utils.StringToInt(c.Param("id"))
 	if err != nil {
-		c.IndentedJSON(http.StatusUnprocessableEntity, gin.H{"message": "product id provided is invalid"})
+		c.IndentedJSON(http.StatusBadRequest, gin.H{"message": "product id provided is invalid"})
 	}
 
-	product := database.FetchProductByID(productID)
-	c.IndentedJSON(http.StatusOK, product)
+	product, err := database.FetchProductByID(productID)
+	if err != nil {
+		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "product with the specified ID could not be retrieved"})
+	}
 
-	// c.IndentedJSON(http.StatusNotFound, gin.H{"message": "product not found"})
+	c.IndentedJSON(http.StatusOK, product)
 
 	// curl http://localhost:8080/product/2
 }
@@ -46,12 +48,12 @@ func postProduct(c *gin.Context) {
 
 	// Call BindJSON to bind the received JSON to newProduct
 	if err := c.ShouldBindJSON(&newProduct); err != nil {
-		c.IndentedJSON(http.StatusUnprocessableEntity, gin.H{"message": "product data is invalid"})
+		c.IndentedJSON(http.StatusBadRequest, gin.H{"message": "product data is invalid"})
 		return
 	}
 
 	if err := database.AddProduct(newProduct); err != nil {
-		c.IndentedJSON(http.StatusUnprocessableEntity, gin.H{"message": "product unsuccessfully created"})
+		c.IndentedJSON(http.StatusBadRequest, gin.H{"message": "product unsuccessfully created"})
 		return
 	}
 
