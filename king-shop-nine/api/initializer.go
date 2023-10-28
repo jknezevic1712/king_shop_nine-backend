@@ -42,22 +42,20 @@ func getProductByID(c *gin.Context) {
 }
 
 func postProduct(c *gin.Context) {
-	var newProduct utils.Product
+	newProduct := utils.Product{}
 
 	// Call BindJSON to bind the received JSON to newProduct
-	err := c.BindJSON(&newProduct)
-	if err != nil {
-		// log.Printf("ERROR => %v\n", err)
+	if err := c.ShouldBindJSON(&newProduct); err != nil {
 		c.IndentedJSON(http.StatusUnprocessableEntity, gin.H{"message": "product data is invalid"})
 		return
 	}
 
-	c.IndentedJSON(http.StatusCreated, gin.H{"message": "product created"})
-	// log.Printf("ALRIGHT\n")
+	if err := database.AddProduct(newProduct); err != nil {
+		c.IndentedJSON(http.StatusUnprocessableEntity, gin.H{"message": "product unsuccessfully created"})
+		return
+	}
 
-	// Add the new product to the slice
-	// utils.MockProducts = append(utils.MockProducts, newProduct)
-	// c.IndentedJSON(http.StatusCreated, newProduct)
+	c.IndentedJSON(http.StatusCreated, gin.H{"message": "product successfully created"})
 
 	// curl http://localhost:8080/product --include --header "Content-Type: application/json" --request "POST" --data '{"id": 35,"title": "Old school jeans","price": 34.99,"shortDescription": "Be cool, be oldschool!","description": "Old school style jeans that return you back to the good ol` days!","category": "unisex","subcategory": "all","image": "https://i.ibb.co/ZYW3VTp/brown-brim.png","dateAdded": "1682267143000","rating":{"rate": 4.6,"count": 15}}'
 	// {"id": 35,"title": "Old school jeans","price": 34.99,"shortDescription": "Be cool, be oldschool!","description": "Old school style jeans that return you back to the good ol` days!","category": "unisex","subcategory": "all","image": "https://i.ibb.co/ZYW3VTp/brown-brim.png","dateAdded": "1682267143000","rating": {"rate": 4.6,"count": 15}}

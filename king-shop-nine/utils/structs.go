@@ -9,18 +9,18 @@ type User struct {
 }
 
 type ProductRating struct {
-	Rate  float32 `json:"rate"`
-	Count int     `json:"count"`
+	Rate  float32 `json:"rate" form:"rate" binding:"required"`
+	Count int     `json:"count" form:"count" binding:"required"`
 }
 type Product struct {
 	ID               int           `json:"id"`
-	Title            string        `json:"title"`
-	Price            float32       `json:"price"`
-	ShortDescription string        `json:"shortDescription"`
-	Description      string        `json:"description"`
-	Category         string        `json:"category"`
-	Subcategory      string        `json:"subcategory"`
-	Image            string        `json:"image"`
-	DateAdded        string        `json:"dateAdded"`
-	Rating           ProductRating `json:"rating"`
+	Title            string        `json:"title" form:"title" binding:"required"`
+	Price            float32       `json:"price" form:"price" binding:"required"`
+	ShortDescription string        `json:"shortDescription" form:"shortDescription" binding:"required"`
+	Description      string        `json:"description" form:"description" binding:"required"`
+	Category         string        `json:"category" form:"category" binding:"required"`
+	Subcategory      string        `json:"subcategory" form:"subcategory" binding:"required"`
+	Image            string        `json:"image" form:"image" binding:"required"`
+	DateAdded        string        `json:"dateAdded" form:"dateAdded" binding:"required"`
+	Rating           ProductRating `json:"rating" form:"rating" binding:"required"`
 }
