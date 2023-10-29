@@ -11,11 +11,29 @@ import (
 // Initialize API server with routes defined
 func InitializeApi() {
 	router := gin.Default()
+
+	router.POST("/auth/login/credentials", loginUserViaCredentials)
+	// router.POST("/auth/login/providers", loginUserViaProvider)
+
 	router.GET("/products", getProducts)
+
 	router.GET("/product/:id", getProductByID)
 	router.POST("/product", postProduct)
 
 	router.Run("localhost:8080")
+}
+
+// Login user
+// TODO: encrypt user password on the frontend, fetch hashed user password from the db, unhash both password and compare them. If same, return success and update user session etc.
+func loginUserViaCredentials(c *gin.Context) {
+	userCredentials := utils.UserLoginCredentials{}
+
+	userData, err := database.LoginUserViaCredentials(userCredentials)
+	if err != nil {
+		c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"message": "user could not be signed in", "details": err})
+	}
+
+	c.JSON(http.StatusOK, userData)
 }
 
 // Get all products from database

@@ -24,3 +24,11 @@ type Product struct {
 	DateAdded        string        `json:"dateAdded" form:"dateAdded" binding:"required"`
 	Rating           ProductRating `json:"rating" form:"rating" binding:"required"`
 }
+
+type UserLoginCredentials struct {
+	Email    string `json:"email"`
+	Password string `json:"password"`
+}
+
+type UserData struct {
+}

@@ -126,3 +126,14 @@ func FetchUserByID(userID string, isLogin bool) (utils.User, error) {
 	conn.Close()
 	return user, nil
 }
+
+// Login user via credentials
+//
+// @args userCredentials UserLoginCredentials
+//
+// returns (UserData, error)
+func LoginUserViaCredentials(userCredentials utils.UserLoginCredentials) (utils.UserData, error) {
+	userData := utils.UserData{}
+
+	return userData, nil
+}
